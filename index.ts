@@ -6,7 +6,7 @@ const board = "mlp"
 const site="4channel"
 const post_url = `https://sys.${site}.org/${board}/post`
 const board_url = `https://boards.${site}.org`
-
+const replies=['Bump','bump','Boop','boop','Beep','beep','>page 10']
 async function send_post(msg: string, thread_num: string) {
     try {
         const captcha_res = await solver.recaptcha("6Ldp2bsSAAAAAAJ5uyx_lx34lJeEpTLVkP5k04qc", `${board_url}/${board}/thread/${thread_num}`)
@@ -45,9 +45,9 @@ setInterval(async function () {
         for (const thread of threads) {
             if (target_threads.includes(thread.no)) {
                 console.log(`${thread.no} - ${page} page`)
-                if (page == 10) {
+                if (page === 10) {
                     console.log("sending bump")
-                    await send_post("bump", thread.no)
+                    await send_post(replies[Math.floor(Math.random() * replies.length)], thread.no)
                     console.log("bump sent")
                 }
             }
