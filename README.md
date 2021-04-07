@@ -1,2 +1,3 @@
 # bump_bot
-bumps threads
+bumps 4chan threads <br>
+2captcha
